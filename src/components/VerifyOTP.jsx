@@ -9,7 +9,7 @@ const VerifyOTP = () => {
       const email = localStorage.getItem('email');
 
       const res = await axios.post(
-        'http://localhost:3000/api/auth/verify-otp',
+        'https://passwordless-3.onrender.com/api/auth/verify-otp',
         {
           email,
           otp,
@@ -22,7 +22,9 @@ const VerifyOTP = () => {
 
       window.location.href = '/dashboard';
     } catch (error) {
-      alert(error.response.data.message);
+      alert(
+        error?.response?.data?.message || 'Server Error'
+      );
     }
   };
 
@@ -33,12 +35,12 @@ const VerifyOTP = () => {
           Verify OTP
         </h1>
 
-      <input
-  type='text'
-  placeholder='Enter OTP'
-  className='w-full p-3 rounded-lg mb-4 outline-none bg-slate-700 text-white placeholder-gray-400'
-  onChange={(e) => setOtp(e.target.value)}
-/>
+        <input
+          type='text'
+          placeholder='Enter OTP'
+          className='w-full p-3 rounded-lg mb-4 outline-none bg-slate-700 text-white placeholder-gray-400'
+          onChange={(e) => setOtp(e.target.value)}
+        />
 
         <button
           onClick={verifyOTP}

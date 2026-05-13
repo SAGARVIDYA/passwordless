@@ -7,7 +7,7 @@ const Login = () => {
   const sendOTP = async () => {
     try {
       const res = await axios.post(
-        'http://localhost:3000/api/auth/send-otp',
+        'https://passwordless-3.onrender.com/api/auth/send-otp',
         { email }
       );
 
