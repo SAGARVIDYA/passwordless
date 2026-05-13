@@ -9,10 +9,7 @@ const app = express();
 
 dotenv.config({ path: './src/server/.env' });
 
-app.use(cors({
-  origin: "https://subtle-basbousa-b52c56.netlify.app",
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
